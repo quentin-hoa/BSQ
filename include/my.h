@@ -19,6 +19,7 @@
     #include <dirent.h>
     #define NUMBER_OF_SP 16
     #define NUMBER_OF_FLAGS 3
+    #define FILE_ERROR "no such file or directory"
 
 int my_printf(char *format, ...);
 int my_atoi(char *str);
