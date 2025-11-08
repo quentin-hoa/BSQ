@@ -32,7 +32,8 @@ SRC	= src/my_0.c \
 	src/my_p.c \
 	src/my_b.c \
 	src/my_atoi.c \
-	src/my_strdup.c
+	src/my_strdup.c \
+	src/is_alpha_or_number.c
 OBJ = $(SRC:.c=.o)
 
 

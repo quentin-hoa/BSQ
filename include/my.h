@@ -23,5 +23,7 @@
 int my_printf(char *format, ...);
 int my_atoi(char *str);
 char *my_strdup(char *str);
+int is_apha_char(char c);
+int is_number(char c);
 
 #endif /* _MY_H_ */

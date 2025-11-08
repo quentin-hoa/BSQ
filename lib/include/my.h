@@ -69,6 +69,8 @@ int my_b(int nb);
 int my_b_caller(va_list list);
 int my_w_caller(va_list list);
 int my_w(int nb);
+int is_apha_char(char c);
+int is_number(char c);
 //------------------------------------
 
 #endif /* _MY_H_ */

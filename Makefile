@@ -9,6 +9,7 @@ INCLUDE_PATH = ./include/
 CFLAGS = -I$(INCLUDE_PATH)
 NAME = libmy.a
 EXE = setting_up
+COMMIT ?= 
 
 SRC	= main.c
 OBJ = $(SRC:.c=.o)
@@ -20,12 +21,14 @@ $(NAME): $(OBJ)
 	make -C ./lib
 	clang *.o -L./lib -o $(EXE) -lmy
 
-compilation:
-	gcc -c *.c -g -I$(INCLUDE_PATH)
-	gcc *.o -L./ -o $(EXE) -lmy
+push: fclean
+	git add .
+	git commit -m "$(COMMIT)"
+	git push
 
 clean:
 	rm -f $(OBJ)
+	make clean -C ./lib
 fclean: clean
 	rm -f $(NAME)
 	make fclean -C ./lib
