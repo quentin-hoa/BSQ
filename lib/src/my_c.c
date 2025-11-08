@@ -9,7 +9,7 @@
 
 int my_c_caller(va_list list)
 {
-    char c = va_arg(list, char);
+    char c = va_arg(list, int);
 
     return my_c(c);
 }

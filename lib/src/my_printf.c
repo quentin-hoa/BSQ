@@ -60,7 +60,7 @@ int disp_stdarg(char *s, va_list list)
     return flag_0(s, va_arg(list, int));
 }
 
-void handle_format_skip(const char *format, int *i)
+void handle_format_skip(char *format, int *i)
 {
     if (format[*i] == '0')
         *i += 2;
@@ -68,7 +68,7 @@ void handle_format_skip(const char *format, int *i)
         *i += 1;
 }
 
-int my_printf(const char *format, ...)
+int my_printf(char *format, ...)
 {
     va_list list;
     int count = 0;
