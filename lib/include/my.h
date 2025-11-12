@@ -73,6 +73,7 @@ int is_apha_char(char c);
 int is_number(char c);
 int mini_three(int a, int b, int c);
 int my_atoi_c(char c);
+int my_strcmp(char *s1, char *s2);
 //------------------------------------
 
 #endif /* _MY_H_ */

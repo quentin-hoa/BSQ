@@ -9,9 +9,11 @@ INCLUDE_PATH = ./include/
 CFLAGS = -I$(INCLUDE_PATH) -g
 NAME = libmy.a
 EXE = setting_up
-COMMIT ?= 
+COMMIT ?=
 
-SRC	= main.c
+SRC	= main.c \
+	map.c \
+	algorithm.c
 OBJ = $(SRC:.c=.o)
 
 

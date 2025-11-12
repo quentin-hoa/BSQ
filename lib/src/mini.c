@@ -10,6 +10,7 @@
 int mini_three(int a, int b, int c)
 {
     int mini;
+
     mini = a;
     if (b < a)
         mini = b;
