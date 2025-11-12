@@ -7,6 +7,11 @@
 
 #include "my.h"
 
+int get_size(char *matrix)
+{
+    return my_atoi_c(matrix[0]);
+}
+
 char *erase_first_line(char *matrix)
 {
     int count = 0;
@@ -25,61 +30,160 @@ char *read_file(char *path)
     int fd = open(path, O_RDONLY);
     char *matrix;
 
-    if (fd == -1) {
-        return FILE_ERROR;
-    }
+    /*if (fd == -1) {
+        return ERROR_FILE;
+    }*/
     nb_bytes = read(fd, buff, SIZEBUFFER);
-    buff[nb_bytes + 1] = '\0';
+    buff[nb_bytes] = '\0';
     matrix = my_strdup(erase_first_line(buff));
     return matrix;
 }
 
-char *generate_matrix(int size, char *seed)
+int get_lines(char *matrix)
 {
-    char *matrix = malloc((size * size) + (size - 1) + 1);
-    int k = 0;
+    int nb_lines = 0;
 
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            matrix[k] = '.';
-            k++;
-        }
-        if (i < size -1) {
-            matrix[k] = '\n';
-            k++;
+    for (int k = 0; matrix[k] != '\0'; k++) {
+        if (matrix[k] == '\n')
+            nb_lines++;
+    }
+    nb_lines++;
+    return nb_lines;
+}
+
+int get_col(char *matrix)
+{
+    int nb_col = 0;
+
+    if (matrix[0] != '\0') {
+        for (int k = 0; matrix[k] != '\n' && matrix[k] != '\0'; k++) {
+            nb_col++;
         }
     }
-    matrix[k] = '\0';
-    return matrix;
+    return nb_col;
+}
+
+void malloc_twod_array(char **twod_array, int nb_lines, int nb_col)
+{
+    for (int k = 0; k < nb_lines; k++) {
+        twod_array[k] = malloc(nb_col + 1);
+    }
+
+}
+
+char **oned_to_twod(char *matrix)
+{
+    int nb_lines = get_lines(matrix);
+    int nb_col = get_col(matrix);
+    int m_i = 0;
+    int row_i = 0;
+    int col_i = 0;
+    char **result = malloc(nb_lines * sizeof(char *));
+
+    malloc_twod_array(result, nb_lines, nb_col);
+    for (m_i = 0; matrix[m_i] != '\0'; m_i++) {
+        if (matrix[m_i] == '\n') {
+            result[row_i][col_i] = '\0';
+            row_i++;
+            col_i = 0;
+        } else {
+            result[row_i][col_i] = matrix[m_i];
+            col_i++;
+        }
+    }
+    if (row_i < nb_lines)
+        result[row_i][col_i] = '\0';
+    return result;
+}
+
+void fill_map_of_number(int i, int j, char **map, int **map_of_number)
+{
+    
+}
+
+int **find_bigest_square(char **map, int row, int col)
+{
+    int **map_of_number;
+    int i = 0;
+    int j = 0;
+    map_of_number = malloc(row * sizeof(int)); 
+    for (int k = 0; k < row; k++) {
+        map_of_number[k] = malloc((row) * sizeof(int) + 1);
+    }
+    for (i; i < row; i++){
+        for (j = 0; j < col; j++) {
+            if (map[i][j] == 'o') {
+                map_of_number[i][j] = 0;
+            } else if (i == 0 || j == 0) {
+                map_of_number[i][j] = 1;
+            }
+            else {
+                map_of_number[i][j] = 1 + mini_three(map_of_number[i - 1][j], map_of_number[i][j - 1], map_of_number[i - 1][j - 1]);
+            }
+        }
+    }
+    for (int k = 0; k < row; k++) {
+        for (int f = 0; f < col; f++) {
+            my_printf("%d", map_of_number[k][f]);
+        }
+        my_printf("\n");
+    }
+    return map_of_number;
+}
+
+void print_map_number()
+{
+
+}
+
+char *generate_matrix(int size, char *seed)
+{
+    // execute perl script
+    return "";
 }
 
 int main(int ac, char **av)
 {
     char *matrix = malloc(SIZEBUFFER);
+    char **map;
+    int i = 0;
+    int size;
+    int row;
+    int col;
 
     if (ac == 1) {
         my_printf("To few arguments\n");
         return 84;
     }
-    if (is_apha_char(av[1][0]) == 1) {
-        //part with matrix from the file
-        matrix = read_file(av[1]);
-        if (matrix == FILE_ERROR) {
-            my_printf("%s\n", FILE_ERROR);
-            return 84;
-        }
-        my_printf("%s", matrix);
-
+    if (ac > 3) {
+        my_printf("to many arguments\n");
+        return 84;
     }
-    if (is_number(av[1][0]) == 1) {
-        //part with the random generator of matrix
+    if (is_apha_char(av[1][0]) == 1) {//part with matrix from the file
+        matrix = read_file(av[1]);
+        /*if (matrix == ERROR_FILE) {
+            my_printf("%s\n", ERROR_FILE);
+            return 84;
+        }*/
+
+        map = oned_to_twod(matrix);
+        row = get_lines(matrix);
+        col = get_col(matrix);
+        find_bigest_square(map, row, col);
+
+        //print twod_array
+        while (map[i] != NULL) {
+            my_printf("%s\n",map[i]);
+            i++;
+        }
+    }
+    if (is_number(av[1][0]) == 1) {//part with the random generator of matrix
         if (av[2] == NULL) {
             my_printf("To few arguments\n");
             return 84;
         }
-        matrix = generate_matrix(my_atoi(av[1]),av[2]);
-        printf("%s", matrix);
     }
     free(matrix);
+    free(map);
     return 0;
 }

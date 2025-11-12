@@ -15,3 +15,10 @@ int my_atoi(char *str)
     }
     return nb;
 }
+
+int my_atoi_c(char c)
+{
+    int nb = 0;
+    nb = (nb * 10) + (c - '0');
+    return nb;
+}

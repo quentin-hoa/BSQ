@@ -6,7 +6,7 @@
 ##
 
 INCLUDE_PATH = ./include/
-CFLAGS = -I$(INCLUDE_PATH)
+CFLAGS = -I$(INCLUDE_PATH) -g
 NAME = libmy.a
 EXE = setting_up
 COMMIT ?= 
@@ -19,7 +19,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C ./lib
-	clang *.o -L./lib -o $(EXE) -lmy
+	clang $(SRC) $(CFLAGS) -L./lib -o $(EXE) -lmy
 
 push: fclean
 	git add .

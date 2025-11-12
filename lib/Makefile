@@ -6,7 +6,7 @@
 ##
 
 INCLUDE_PATH = ./include/
-CFLAGS = -I$(INCLUDE_PATH)
+CFLAGS = -I$(INCLUDE_PATH) -g
 NAME = libmy.a
 EXE = setting_up
 
@@ -33,7 +33,8 @@ SRC	= src/my_0.c \
 	src/my_b.c \
 	src/my_atoi.c \
 	src/my_strdup.c \
-	src/is_alpha_or_number.c
+	src/is_alpha_or_number.c \
+	src/mini.c
 OBJ = $(SRC:.c=.o)
 
 

@@ -17,14 +17,14 @@
     #include <sys/stat.h>
     #include <sys/types.h>
     #include <dirent.h>
-    #define NUMBER_OF_SP 16
-    #define NUMBER_OF_FLAGS 3
-    #define FILE_ERROR "no such file or directory"
+    #define ERROR_FILE "no such file or directory"
 
 int my_printf(char *format, ...);
 int my_atoi(char *str);
 char *my_strdup(char *str);
 int is_apha_char(char c);
 int is_number(char c);
+int mini_three(int a, int b, int c);
+int my_atoi_c(char c);
 
 #endif /* _MY_H_ */
