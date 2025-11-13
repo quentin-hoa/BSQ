@@ -7,7 +7,7 @@
 
 #ifndef _MY_H_
     #define _MY_H_
-    #define SIZEBUFFER 16000
+    #define SIZEBUFFER 1000100
     #include <unistd.h>
     #include <stdarg.h>
     #include <stdarg.h>
@@ -17,7 +17,7 @@
     #include <sys/stat.h>
     #include <sys/types.h>
     #include <dirent.h>
-    #define NUMBER_OF_SP 16
+    #define NUMBER_OF_SP 14
     #define NUMBER_OF_FLAGS 3
 
 typedef struct specifier_s {

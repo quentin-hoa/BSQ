@@ -19,7 +19,6 @@ char *erase_first_line(char *matrix)
 
 char *read_file(char *path)
 {
-    int count = 0;
     char buff[SIZEBUFFER];
     int nb_bytes = 0;
     int fd = open(path, O_RDONLY);

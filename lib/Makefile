@@ -16,7 +16,6 @@ SRC	= src/my_0.c \
 	src/my_e.c \
 	src/my_ee.c \
 	src/my_f.c \
-	src/my_g.c \
 	src/my_o.c \
 	src/my_printf.c \
 	src/my_put_decimal.c \
@@ -25,7 +24,6 @@ SRC	= src/my_0.c \
 	src/my_space.c \
 	src/my_strcat.c \
 	src/my_strlen.c \
-	src/my_u.c \
 	src/my_x.c \
 	src/my_xx.c \
 	src/my_plus.c \

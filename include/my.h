@@ -7,7 +7,7 @@
 
 #ifndef _MY_H_
     #define _MY_H_
-    #define SIZEBUFFER 16000
+    #define SIZEBUFFER 1000100
     #include <unistd.h>
     #include <stdarg.h>
     #include <stdarg.h>
@@ -18,6 +18,7 @@
     #include <sys/types.h>
     #include <dirent.h>
     #define ERROR_FILE "no such file or directory"
+
 
 int my_printf(char *format, ...);
 int my_atoi(char *str);
@@ -37,5 +38,16 @@ void mark_biggest_square(char **map, int **num_map, int rows, int cols);
 void fill_map_of_number(int i, int j, char **map, int **map_of_number);
 int **find_bigest_square(char **map, int **map_of_number, int row, int col);
 void print_map_number(char **map, int row, int col);
+
+typedef struct square_s {
+    int max_j;
+    int max_i;
+    int i;
+    int j;
+    int max_size;
+} square_t;
+void first_if(square_t *max, char **map, int **num_map);
+void second_if(char **map, square_t *max);
+void mark_biggest_square(char **map, int **num_map, int rows, int cols);
 
 #endif /* _MY_H_ */

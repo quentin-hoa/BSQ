@@ -6,14 +6,16 @@
 ##
 
 INCLUDE_PATH = ./include/
-CFLAGS = -I$(INCLUDE_PATH) -g
+CFLAGS = -I$(INCLUDE_PATH) -g -Wall
 NAME = libmy.a
 EXE = setting_up
 COMMIT ?=
 
 SRC	= main.c \
 	map.c \
-	algorithm.c
+	algorithm.c \
+	mark_biggest_square.c \
+	row_and_col.c
 OBJ = $(SRC:.c=.o)
 
 
