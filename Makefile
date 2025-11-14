@@ -15,7 +15,8 @@ SRC	= main.c \
 	map.c \
 	algorithm.c \
 	mark_biggest_square.c \
-	row_and_col.c
+	row_and_col.c \
+	matrice_generation.c
 OBJ = $(SRC:.c=.o)
 
 

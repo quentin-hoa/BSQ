@@ -38,6 +38,10 @@ void mark_biggest_square(char **map, int **num_map, int rows, int cols);
 void fill_map_of_number(int i, int j, char **map, int **map_of_number);
 int **find_bigest_square(char **map, int **map_of_number, int row, int col);
 void print_map_number(char **map, int row, int col);
+char **generate_map(char *number, char *seed);
+int my_strlen(char *str);
+void call_algorithm_for_home_made_map(char *size, char **map);
+void free_all(char **map, int **map_of_number, int size);
 
 typedef struct square_s {
     int max_j;

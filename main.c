@@ -5,6 +5,7 @@
 ** task2
 */
 
+#include "include/my.h"
 #include "my.h"
 
 int error_handling(int ac)
@@ -41,6 +42,9 @@ int main_file_logic(char *filepath)
     if (!map_of_number)
         return 84;
     algorithm(map, map_of_number, row, col);
+    free_all(map, map_of_number, row);
+    free(map);
+    free(map_of_number);
     return 0;
 }
 
@@ -56,6 +60,7 @@ int main(int ac, char **av)
             return 84;
     }
     if (is_number(av[1][0]) == 1) {
+        call_algorithm_for_home_made_map(av[1], generate_map(av[1], av[2]));
     }
     return 0;
 }
