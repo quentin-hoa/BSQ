@@ -19,15 +19,17 @@ char *erase_first_line(char *matrix)
 
 char *read_file(char *path)
 {
-    char buff[SIZEBUFFER];
+    int size = get_size(path);
+    char *buff = malloc(size);
     int nb_bytes = 0;
     int fd = open(path, O_RDONLY);
     char *matrix;
 
-    if (fd == -1) {
+    if (size == 84)
         return ERROR_FILE;
-    }
-    nb_bytes = read(fd, buff, SIZEBUFFER);
+    if (fd == -1)
+        return ERROR_FILE;
+    nb_bytes = read(fd, buff, size);
     buff[nb_bytes] = '\0';
     if (buff == NULL)
         return ERROR_FILE;

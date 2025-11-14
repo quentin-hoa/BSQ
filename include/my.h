@@ -54,5 +54,6 @@ void first_if(square_t *max, char **map, int **num_map);
 void second_if(char **map, square_t *max);
 void mark_biggest_square(char **map, int **num_map, int rows, int cols);
 int error(int size, char *seed);
+int get_size(char *path);
 
 #endif /* _MY_H_ */

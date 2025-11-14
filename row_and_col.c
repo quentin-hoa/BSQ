@@ -29,3 +29,22 @@ int get_col(char *matrix)
     }
     return nb_col;
 }
+
+int get_size(char *path)
+{
+    int size;
+    char buff[1];
+    int nb_bytes = 0;
+    int fd = open(path, O_RDONLY);
+    int i = 0;
+
+    if (fd == -1) {
+        return 84;
+    }
+    nb_bytes = read(fd, buff, 1);
+    for (i = 0; nb_bytes != 0; i++) {
+        nb_bytes = read(fd, buff, 1);
+    }
+    close(fd);
+    return i;
+}

@@ -5,6 +5,7 @@
 ** task2
 */
 
+#include "include/my.h"
 #include "my.h"
 
 int error_handling(int ac)
@@ -34,8 +35,6 @@ int main_file_logic(char *filepath)
     int col = get_col(matrix);
     int **map_of_number = NULL;
 
-    if (row >= 1000)
-        return 84;
     if (my_strcmp(matrix, ERROR_FILE) == 0)
         return 84;
     map = oned_to_twod(matrix);
