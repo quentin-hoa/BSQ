@@ -19,7 +19,7 @@ char *erase_first_line(char *matrix)
 
 char *read_file(char *path)
 {
-    int size = get_size(path);
+    int size = get_size(path) + 1;
     char *buff = malloc(size);
     int nb_bytes = 0;
     int fd = open(path, O_RDONLY);
