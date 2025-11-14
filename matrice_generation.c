@@ -27,6 +27,8 @@ void call_algorithm_for_home_made_map(char *size, char **map)
     mark_biggest_square(map, map_of_number, size_int, size_int);
     print_map_number(map, size_int, size_int);
     free_all(map, map_of_number, size_int);
+    free(map);
+    free(map_of_number);
 }
 
 char **generate_map(char *number, char *seed)

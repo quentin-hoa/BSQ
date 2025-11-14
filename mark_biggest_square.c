@@ -36,11 +36,14 @@ void mark_biggest_square(char **map, int **num_map, int rows, int cols)
             first_if(max, map, num_map);
         }
     }
-    if (max->max_size == 0)
+    if (max->max_size == 0) {
+        free(max);
         return;
+    }
     for (max->i = 0; max->i < max->max_size; max->i++) {
         for (max->j = 0; max->j < max->max_size; max->j++) {
             second_if(map, max);
         }
     }
+    free(max);
 }

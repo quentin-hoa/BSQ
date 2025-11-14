@@ -5,7 +5,6 @@
 ** task2
 */
 
-#include "include/my.h"
 #include "my.h"
 
 int error_handling(int ac)
