@@ -25,8 +25,6 @@ char *read_file(char *path)
     int fd = open(path, O_RDONLY);
     char *matrix;
 
-    if (size == 84)
-        return ERROR_FILE;
     if (fd == -1)
         return ERROR_FILE;
     nb_bytes = read(fd, buff, size);

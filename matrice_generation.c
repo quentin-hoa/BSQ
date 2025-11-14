@@ -46,8 +46,12 @@ char **generate_map(char *number, char *seed)
     return map;
 }
 
-int error(int size, char *seed)
+int error(int size, char *seed, int ac)
 {
+    if (ac < 3)
+        return 84;
+    if (seed[0] == '\0')
+        return 84;
     if (size < 0) {
         return 84;
     }

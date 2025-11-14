@@ -9,17 +9,21 @@
 int my_atoi(char *str)
 {
     int nb = 0;
+    int i = 0;
+    int sign = 1;
 
-    for (int i = 0; i < my_strlen(str); i++) {
-        nb = (nb * 10) + (str[i] - '0');
+    if (str[0] == '-') {
+        sign = -1;
+        i = 1;
+    } else if (str[0] == '+') {
+        i = 1;
     }
-    return nb;
-}
-
-int my_atoi_c(char c)
-{
-    int nb = 0;
-
-    nb = (nb * 10) + (c - '0');
-    return nb;
+    for (; i < my_strlen(str); i++) {
+        if (str[i] >= '0' && str[i] <= '9') {
+            nb = (nb * 10) + (str[i] - '0');
+        } else {
+            break;
+        }
+    }
+    return nb * sign;
 }

@@ -5,7 +5,6 @@
 ** task2
 */
 
-#include "include/my.h"
 #include "my.h"
 
 int error_handling(int ac)
@@ -57,12 +56,12 @@ int main(int ac, char **av)
     if (error_code != 0)
         return error_code;
     if (is_apha_char(av[1][0]) == 1) {
-        if (main_file_logic(av[1]) == 84)
-            return 84;
+        if (main_file_logic(av[1]) != 0)
+            return main_file_logic(av[1]);
     }
-    if (is_number(av[1][0]) == 1) {
+    if (is_number(av[1][0]) == 1 || av[1][0] == '-') {
         size = my_atoi(av[1]);
-        if (error(size, av[2]) != 0)
+        if (error(size, av[2], ac) != 0)
             return 84;
         call_algorithm_for_home_made_map(av[1], generate_map(av[1], av[2]));
     }
