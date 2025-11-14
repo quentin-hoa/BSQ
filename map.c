@@ -29,7 +29,7 @@ char *read_file(char *path)
         return ERROR_FILE;
     nb_bytes = read(fd, buff, size);
     buff[nb_bytes] = '\0';
-    if (buff == NULL)
+    if (buff == NULL || nb_bytes == 0)
         return ERROR_FILE;
     matrix = my_strdup(erase_first_line(buff));
     for (int i = 0; matrix[i] != '\0'; i++) {
