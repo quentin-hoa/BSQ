@@ -5,7 +5,6 @@
 ** setting up
 */
 
-#include "include/my.h"
 #include "my.h"
 
 void first_if(square_t *max, char **map, int **num_map)

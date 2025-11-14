@@ -7,14 +7,6 @@
 
 #include "my.h"
 
-void free_all(char **map, int **map_of_number, int size)
-{
-    for (int k = 0; k < size; k++) {
-        free(map[k]);
-        free(map_of_number[k]);
-    }
-}
-
 void call_algorithm_for_home_made_map(char *size, char **map)
 {
     int size_int = my_atoi(size);
@@ -52,4 +44,27 @@ char **generate_map(char *number, char *seed)
         map[i][size] = '\0';
     }
     return map;
+}
+
+int error(int size, char *seed)
+{
+    if (size < 0) {
+        return 84;
+    }
+    if (size >= 5000) {
+        return 84;
+    }
+    for (int i = 0; seed[i] != '\0'; i++) {
+        if (seed[i] != '.' && seed[i] != 'o')
+            return 84;
+    }
+    return 0;
+}
+
+void free_all(char **map, int **map_of_number, int size)
+{
+    for (int k = 0; k < size; k++) {
+        free(map[k]);
+        free(map_of_number[k]);
+    }
 }

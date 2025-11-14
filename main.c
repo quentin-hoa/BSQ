@@ -34,6 +34,8 @@ int main_file_logic(char *filepath)
     int col = get_col(matrix);
     int **map_of_number = NULL;
 
+    if (row >= 1000)
+        return 84;
     if (my_strcmp(matrix, ERROR_FILE) == 0)
         return 84;
     map = oned_to_twod(matrix);
@@ -50,6 +52,7 @@ int main_file_logic(char *filepath)
 int main(int ac, char **av)
 {
     int error_code = 0;
+    int size;
 
     error_code = error_handling(ac);
     if (error_code != 0)
@@ -59,6 +62,9 @@ int main(int ac, char **av)
             return 84;
     }
     if (is_number(av[1][0]) == 1) {
+        size = my_atoi(av[1]);
+        if (error(size, av[2]) != 0)
+            return 84;
         call_algorithm_for_home_made_map(av[1], generate_map(av[1], av[2]));
     }
     return 0;
