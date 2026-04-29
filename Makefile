@@ -11,12 +11,12 @@ NAME = libmy.a
 EXE = setting_up
 COMMIT ?=
 
-SRC	= main.c \
-	map.c \
-	algorithm.c \
-	mark_biggest_square.c \
-	row_and_col.c \
-	matrice_generation.c
+SRC	= src/main.c \
+	src/map.c \
+	src/algorithm.c \
+	src/mark_biggest_square.c \
+	src/row_and_col.c \
+	src/matrice_generation.c
 OBJ = $(SRC:.c=.o)
 
 
